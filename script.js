@@ -82,6 +82,65 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Trigger initial animation check
     animateOnScroll();
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuButton.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+    
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                user_name: this.user_name.value,
+                user_email: this.user_email.value,
+                message: this.message.value
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+                .then(function() {
+                    alert('Message sent successfully!');
+                    contactForm.reset();
+                }, function(error) {
+                    alert('Failed to send message. Please try again later.');
+                    console.error('Error:', error);
+                });
+        });
+    }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 });
 
 // Add scroll event listener for animations
