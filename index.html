@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethem Demir - Portfolio & Blog</title>
+    <title>Ethem Demir - AI & Drone Technologies Engineer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+            emailjs.init("YOUR_PUBLIC_KEY");
         })();
     </script>
 </head>
@@ -18,8 +18,11 @@
         <div class="nav-brand">Ethem Demir</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#blog">Blog</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#awards">Awards</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -27,87 +30,225 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Ethem Demir</h1>
-            <p class="subtitle">Software Engineer & Entrepreneur</p>
-            <p class="description">Building scalable and efficient systems with a passion for innovation.</p>
+            <p class="subtitle">AI & Drone Technologies Engineer</p>
+            <p class="description">Specializing in autonomous UAV systems, computer vision, and AI development. Founder of Poyraz Aviation and experienced in leading UAV teams and developing innovative drone solutions.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="cta-button">Get in Touch</a>
+                <a href="CV_Ethem-Demir.pdf" class="cta-button secondary" download>Download CV</a>
+            </div>
         </div>
     </section>
 
     <section id="about" class="about">
         <h2>About Me</h2>
         <div class="about-content">
-            <p>I am a software engineer currently working at Mostas Tech, where I focus on developing robust and scalable solutions. As a co-founder of Ethem Demir Inc., I combine technical expertise with entrepreneurial vision to create impactful products.</p>
-        </div>
-    </section>
-
-    <section id="portfolio" class="portfolio">
-        <h2>Portfolio</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="path-to-your-project-image.jpg" alt="Project 1">
-                <div class="portfolio-content">
-                    <h3>Project 1</h3>
-                    <p>A brief description of your first project and its key features.</p>
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">React</span>
-                        <span class="portfolio-tag">Node.js</span>
-                        <span class="portfolio-tag">MongoDB</span>
+            <p>I hold a degree in Information Systems Engineering, specializing in Autonomous UAV Systems and Computer Vision. As the Founder of Poyraz Aviation, I led the UAV team as Captain and Software Unit Leader, and established 'The SAU Unmanned Aerial Vehicles Community,' mentoring UAV teams for two years.</p>
+            <p>With extensive experience in AI, software development, UAV systems, and project management, I have contributed to various innovative projects in the field of autonomous systems and computer vision.</p>
+            <div class="languages">
+                <h3>Language Skills</h3>
+                <div class="language-grid">
+                    <div class="language-item">
+                        <h4>English</h4>
+                        <ul>
+                            <li>Listening: C1</li>
+                            <li>Reading: C2</li>
+                            <li>Writing: C1</li>
+                            <li>Spoken Production: B1</li>
+                            <li>Spoken Interaction: B2</li>
+                        </ul>
                     </div>
-                    <div class="portfolio-links">
-                        <a href="#" class="portfolio-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                        <a href="#" class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="path-to-your-project-image.jpg" alt="Project 2">
-                <div class="portfolio-content">
-                    <h3>Project 2</h3>
-                    <p>A brief description of your second project and its key features.</p>
-                    <div class="portfolio-tags">
-                        <span class="portfolio-tag">Vue.js</span>
-                        <span class="portfolio-tag">Firebase</span>
-                        <span class="portfolio-tag">Tailwind CSS</span>
-                    </div>
-                    <div class="portfolio-links">
-                        <a href="#" class="portfolio-link">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                        <a href="#" class="portfolio-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
+                    <div class="language-item">
+                        <h4>German</h4>
+                        <ul>
+                            <li>Listening: A2</li>
+                            <li>Reading: B1</li>
+                            <li>Writing: B1</li>
+                            <li>Spoken Production: A2</li>
+                            <li>Spoken Interaction: A2</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="blog" class="blog">
-        <h2>Blog</h2>
-        <div class="blog-grid">
-            <!-- Blog posts will be added here -->
-            <article class="blog-post">
-                <h3>Blog Post Title</h3>
-                <p class="post-date">Date</p>
-                <p>Blog post excerpt...</p>
-                <a href="#" class="read-more">Read More</a>
-            </article>
+    <section id="expertise" class="expertise">
+        <h2>Areas of Expertise</h2>
+        <div class="expertise-grid">
+            <div class="expertise-item">
+                <i class="fas fa-robot"></i>
+                <h3>Artificial Intelligence</h3>
+                <ul>
+                    <li>Machine Learning</li>
+                    <li>Deep Learning</li>
+                    <li>Computer Vision</li>
+                    <li>YOLO, TensorFlow, PyTorch</li>
+                    <li>NVIDIA AI Development</li>
+                </ul>
+            </div>
+            <div class="expertise-item">
+                <i class="fas fa-drone"></i>
+                <h3>Drone Technologies</h3>
+                <ul>
+                    <li>Autonomous Systems</li>
+                    <li>Flight Control Systems</li>
+                    <li>Swarm UAV Development</li>
+                    <li>ROS/ROS2 Integration</li>
+                    <li>Gazebo & Webots Simulation</li>
+                </ul>
+            </div>
+            <div class="expertise-item">
+                <i class="fas fa-code"></i>
+                <h3>Software Development</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>C++</li>
+                    <li>ROS/ROS2</li>
+                    <li>Embedded Systems</li>
+                    <li>Full Stack Development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Mostas Technology</h3>
+                    <p class="timeline-date">Current</p>
+                    <p class="timeline-position">Software Engineer</p>
+                    <ul class="timeline-details">
+                        <li>Agricultural Disease detection and classification AI Model</li>
+                        <li>AI-Based Agricultural Dashboard Development</li>
+                        <li>Autopilot Independent Drone Mapping</li>
+                        <li>AI Agent Development</li>
+                        <li>System Architecture</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Dasal Aviation</h3>
+                    <p class="timeline-date">05/2024 - 08/2024</p>
+                    <p class="timeline-position">Computer Vision Software Development Engineer</p>
+                    <ul class="timeline-details">
+                        <li>Developing image transmission systems</li>
+                        <li>Conducting swarm UAV studies (Crazyswarm)</li>
+                        <li>UAV simulations using ROS, ROS2, Gazebo, Webots</li>
+                        <li>Drone assembly and R&D</li>
+                        <li>Computer vision implementation for detection and tracking</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Poyraz Aviation</h3>
+                    <p class="timeline-date">10/2021 - 05/2024</p>
+                    <p class="timeline-position">Software Manager & Team Captain</p>
+                    <ul class="timeline-details">
+                        <li>Led UAV team as Captain and Software Unit Leader</li>
+                        <li>Managed drone component installations and configurations</li>
+                        <li>Developed autonomous mission flight systems</li>
+                        <li>Implemented computer vision and AI solutions</li>
+                        <li>Established SAU Unmanned Aerial Vehicles Community</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-item">
+                <div class="project-image">
+                    <img src="img/droneAI.png" alt="ZINK VTOL">
+                </div>
+                <div class="project-content">
+                    <h3>ZINK VTOL</h3>
+                    <p>Autonomous cargo VTOL system for emergency equipment transport in open waters. Developed as Project & Software Manager at Poyraz Aviation.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Autonomous Systems</span>
+                        <span class="project-tag">VTOL</span>
+                        <span class="project-tag">Emergency Response</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-image">
+                    <img src="img/droneAI.png" alt="Poyraz Drone">
+                </div>
+                <div class="project-content">
+                    <h3>Poyraz Drone</h3>
+                    <p>Border security drone with autonomous patrol, object detection, and facial recognition capabilities. Finalist in 2022 International Free Mission UAV Competition.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Computer Vision</span>
+                        <span class="project-tag">Autonomous Navigation</span>
+                        <span class="project-tag">Security Systems</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-image">
+                    <img src="img/droneAI.png" alt="SolarGuard">
+                </div>
+                <div class="project-content">
+                    <h3>SolarGuard</h3>
+                    <p>Autonomous drone system for solar panel damage detection using thermal and normal cameras. Placed 11th in International UAV Competition.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Thermal Imaging</span>
+                        <span class="project-tag">AI Detection</span>
+                        <span class="project-tag">Energy Sector</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards" class="awards">
+        <h2>Awards & Achievements</h2>
+        <div class="awards-grid">
+            <div class="award-item">
+                <i class="fas fa-trophy"></i>
+                <h3>MÜSİAD G-FAST Entrepreneur Competition</h3>
+                <p class="award-date">November 2023</p>
+                <p>1st Place - "Damage Detection with Drone in the Energy Sector"</p>
+            </div>
+            <div class="award-item">
+                <i class="fas fa-medal"></i>
+                <h3>Teknofest 2023 International UAV Competition</h3>
+                <p class="award-date">April 2023</p>
+                <p>9th Place among 3000+ applicants - Team Captain & Software Lead</p>
+            </div>
+            <div class="award-item">
+                <i class="fas fa-medal"></i>
+                <h3>Teknofest 2022 International Free Mission UAV Competition</h3>
+                <p class="award-date">August 2022</p>
+                <p>Top 20 among thousands of applicants - Software Lead</p>
+            </div>
         </div>
     </section>
 
     <section id="contact" class="contact">
         <h2>Contact</h2>
         <div class="contact-content">
-            <div class="social-links">
-                <a href="https://github.com/3TH3M" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/ethem-demir/" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:contact@ethemdemir.com.tr">contact@ethemdemir.com.tr</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/3TH3M" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/ethem-demir/" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                </div>
             </div>
             <form class="contact-form" id="contact-form">
                 <input type="text" name="user_name" placeholder="Name" required>
@@ -119,7 +260,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Ethem Demir. All rights reserved.</p>
+        <p>&copy; 2024 Ethem Demir. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>

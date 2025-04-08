@@ -1,3 +1,8 @@
+// Initialize EmailJS
+(function() {
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+})();
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -8,7 +13,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission handling with EmailJS
+// Form submission handling
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -16,52 +21,79 @@ if (contactForm) {
         
         // Show loading state
         const submitButton = this.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton.textContent;
+        const originalText = submitButton.textContent;
         submitButton.textContent = 'Sending...';
         submitButton.disabled = true;
         
+        // Get form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
         // Send email using EmailJS
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-            .then(() => {
-                // Show success message
-                alert('Thank you for your message! I will get back to you soon.');
-                this.reset();
-            })
-            .catch((error) => {
-                // Show error message
-                alert('Sorry, there was an error sending your message. Please try again later.');
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                // Reset button state
-                submitButton.textContent = originalButtonText;
-                submitButton.disabled = false;
-            });
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+            from_name: data.user_name,
+            from_email: data.user_email,
+            message: data.message,
+            to_email: "contact@ethemdemir.com.tr"
+        })
+        .then(function() {
+            // Show success message
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        })
+        .catch(function(error) {
+            // Show error message
+            alert('Sorry, there was an error sending your message. Please try again later.');
+            console.error('Error:', error);
+        })
+        .finally(function() {
+            // Reset button state
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        });
     });
 }
 
-// Add scroll-based animations
-window.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('section');
+// Scroll-based animations
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.timeline-item, .skill-category, .portfolio-item');
     
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementBottom = element.getBoundingClientRect().bottom;
         const windowHeight = window.innerHeight;
         
-        if (sectionTop < windowHeight * 0.75) {
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
+        if (elementTop < windowHeight * 0.8 && elementBottom > 0) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
         }
     });
+};
+
+// Initialize animations
+document.addEventListener('DOMContentLoaded', function() {
+    // Set initial styles for animated elements
+    const elements = document.querySelectorAll('.timeline-item, .skill-category, .portfolio-item');
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    
+    // Trigger initial animation check
+    animateOnScroll();
 });
 
-// Initialize sections with fade-in effect
-document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('section');
+// Add scroll event listener for animations
+window.addEventListener('scroll', animateOnScroll);
+
+// Add hover effect for portfolio items
+document.querySelectorAll('.portfolio-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
+    });
     
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
     });
 }); 
