@@ -1,6 +1,6 @@
 // Initialize EmailJS
 (function() {
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+    emailjs.init("pxTnqffnmqNgq_Fe6"); // Replace with your EmailJS public key
 })();
 
 // Smooth scrolling for navigation links
@@ -30,9 +30,9 @@ if (contactForm) {
         const data = Object.fromEntries(formData);
         
         // Send email using EmailJS
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        emailjs.send("service_5e6yvo8", "template_5uus8ck", {
             from_name: data.user_name,
-            from_email: data.user_email,
+            from_email: data.user_email,    
             message: data.message,
             to_email: "contact@ethemdemir.com.tr"
         })
@@ -72,16 +72,11 @@ const animateOnScroll = () => {
 
 // Initialize animations
 document.addEventListener('DOMContentLoaded', function() {
-    // Set initial styles for animated elements
-    const elements = document.querySelectorAll('.timeline-item, .skill-category, .portfolio-item');
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    // Handle loader
+    const loader = document.querySelector('.loader');
+    window.addEventListener('load', function() {
+        loader.classList.add('hidden');
     });
-    
-    // Trigger initial animation check
-    animateOnScroll();
 
     // Mobile menu functionality
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
@@ -101,6 +96,16 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.remove('active');
         });
     });
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
     
     // Contact form handling
     const contactForm = document.getElementById('contact-form');
@@ -108,6 +113,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Show loading state
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
             
             // Get form data
             const formData = {
@@ -117,13 +128,17 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             // Send email using EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+            emailjs.send('service_5e6yvo8', 'template_5uus8ck', formData)
                 .then(function() {
                     alert('Message sent successfully!');
                     contactForm.reset();
                 }, function(error) {
                     alert('Failed to send message. Please try again later.');
                     console.error('Error:', error);
+                })
+                .finally(function() {
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
                 });
         });
     }
@@ -141,6 +156,36 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Scroll animations
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.timeline-item, .expertise-item, .project-item, .award-item');
+        
+        elements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            const windowHeight = window.innerHeight;
+            
+            if (elementTop < windowHeight * 0.8 && elementBottom > 0) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+
+    // Initialize animations
+    const elements = document.querySelectorAll('.timeline-item, .expertise-item, .project-item, .award-item');
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    
+    // Trigger initial animation check
+    animateOnScroll();
+    
+    // Add scroll event listener for animations
+    window.addEventListener('scroll', animateOnScroll);
 });
 
 // Add scroll event listener for animations
