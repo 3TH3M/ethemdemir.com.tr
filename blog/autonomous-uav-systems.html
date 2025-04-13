@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with Autonomous UAV Systems - Ethem Demir</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Ethem Demir</div>
+        <button class="mobile-menu-button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#expertise">Expertise</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#awards">Awards</a></li>
+            <li><a href="../index.html#blog">Blog & Academy</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <article class="blog-post">
+        <header class="blog-post-header">
+            <h1>Getting Started with Autonomous UAV Systems</h1>
+            <div class="blog-post-meta">
+                <span><i class="far fa-calendar"></i> April 2024</span>
+                <span><i class="far fa-clock"></i> 15 min read</span>
+                <span><i class="far fa-folder"></i> Tutorial</span>
+            </div>
+        </header>
+
+        <div class="blog-post-content">
+            <img src="../img/droneAI.png" alt="Autonomous UAV System">
+            
+            <h2>Introduction</h2>
+            <p>Autonomous UAV systems represent the cutting edge of unmanned aerial technology, combining advanced robotics, artificial intelligence, and aerospace engineering. In this comprehensive guide, we'll explore the fundamental concepts, key components, and practical implementation of autonomous UAV systems.</p>
+
+            <h2>Key Components of Autonomous UAV Systems</h2>
+            <p>An autonomous UAV system consists of several critical components that work together to enable autonomous flight:</p>
+            <ul>
+                <li>Flight Control System (FCS)</li>
+                <li>Navigation System</li>
+                <li>Sensors and Perception Systems</li>
+                <li>Communication Systems</li>
+                <li>Power Management</li>
+                <li>Mission Planning Software</li>
+            </ul>
+
+            <h2>Flight Control System</h2>
+            <p>The Flight Control System is the brain of the autonomous UAV. It processes sensor data and controls the aircraft's movements. Here's a basic example of how to implement a simple PID controller in Python:</p>
+            <pre><code>class PIDController:
+    def __init__(self, kp, ki, kd):
+        self.kp = kp
+        self.ki = ki
+        self.kd = kd
+        self.integral = 0
+        self.previous_error = 0
+
+    def compute(self, setpoint, current_value, dt):
+        error = setpoint - current_value
+        self.integral += error * dt
+        derivative = (error - self.previous_error) / dt
+        self.previous_error = error
+        
+        return (self.kp * error + 
+                self.ki * self.integral + 
+                self.kd * derivative)</code></pre>
+
+            <h2>Navigation and Path Planning</h2>
+            <p>Navigation systems in autonomous UAVs typically use a combination of GPS, inertial measurement units (IMUs), and computer vision. The path planning algorithm determines the optimal route from the current position to the target location while avoiding obstacles.</p>
+
+            <blockquote>
+                "The key to successful autonomous navigation is redundancy in sensor systems and robust error handling."
+            </blockquote>
+
+            <h2>Sensors and Perception</h2>
+            <p>Modern autonomous UAVs use a variety of sensors:</p>
+            <ul>
+                <li>LIDAR for 3D mapping and obstacle detection</li>
+                <li>RGB and thermal cameras for visual perception</li>
+                <li>Ultrasonic sensors for proximity detection</li>
+                <li>IMU for orientation and acceleration data</li>
+            </ul>
+
+            <h2>Communication Systems</h2>
+            <p>Reliable communication is crucial for autonomous UAV operations. The system should include:</p>
+            <ul>
+                <li>Telemetry for real-time data transmission</li>
+                <li>Command and control channels</li>
+                <li>Emergency communication protocols</li>
+                <li>Data logging and storage</li>
+            </ul>
+
+            <h2>Best Practices and Safety Considerations</h2>
+            <p>When developing autonomous UAV systems, always prioritize safety:</p>
+            <ul>
+                <li>Implement fail-safe mechanisms</li>
+                <li>Include manual override capabilities</li>
+                <li>Follow regulatory requirements</li>
+                <li>Conduct thorough testing in controlled environments</li>
+                <li>Maintain detailed logs for analysis</li>
+            </ul>
+
+            <div class="blog-post-tags">
+                <span class="blog-post-tag">Autonomous Systems</span>
+                <span class="blog-post-tag">UAV</span>
+                <span class="blog-post-tag">Robotics</span>
+                <span class="blog-post-tag">AI</span>
+                <span class="blog-post-tag">Tutorial</span>
+            </div>
+
+            <div class="blog-post-navigation">
+                <a href="#" class="prev-post"><i class="fas fa-arrow-left"></i> Previous Post</a>
+                <a href="#" class="next-post">Next Post <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <p>&copy; 2024 Ethem Demir. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html> 
