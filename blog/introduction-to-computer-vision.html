@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Computer Vision | Ethem Demir</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Ethem Demir</div>
+        <button class="mobile-menu-button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#expertise">Expertise</a></li>
+            <li><a href="../index.html#experience">Experience</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#awards">Awards</a></li>
+            <li><a href="../index.html#blog">Blog & Academy</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <article class="blog-post">
+        <header class="blog-post-header">
+            <div class="blog-post-meta">
+                <span><i class="far fa-calendar"></i> March 15, 2024</span>
+                <span><i class="far fa-clock"></i> 15 min read</span>
+                <span><i class="far fa-eye"></i> 2.5k views</span>
+            </div>
+            <h1>Introduction to Computer Vision: A Comprehensive Guide</h1>
+            <div class="blog-post-tags">
+                <span class="blog-post-tag">Computer Vision</span>
+                <span class="blog-post-tag">AI</span>
+                <span class="blog-post-tag">Machine Learning</span>
+                <span class="blog-post-tag">Tutorial</span>
+            </div>
+        </header>
+
+        <div class="blog-post-content">
+            <section class="blog-post-section">
+                <h2>What is Computer Vision?</h2>
+                <p>Computer Vision is a field of artificial intelligence that enables computers to interpret and understand visual information from the world, similar to how humans use their eyes and brain. It involves developing algorithms and systems that can process, analyze, and make decisions based on visual data.</p>
+                
+                <div class="blog-post-image">
+                    <img src="../img/computer-vision.jpg" alt="Computer Vision Overview">
+                    <div class="image-caption">Computer Vision enables machines to see and understand the world around them</div>
+                </div>
+            </section>
+
+            <section class="blog-post-section">
+                <h2>Key Components of Computer Vision</h2>
+                <p>Computer Vision systems typically involve several key components:</p>
+                <ul class="feature-list">
+                    <li><strong>Image Acquisition:</strong> Capturing visual data through cameras or other sensors</li>
+                    <li><strong>Preprocessing:</strong> Enhancing and preparing images for analysis</li>
+                    <li><strong>Feature Extraction:</strong> Identifying important patterns and characteristics</li>
+                    <li><strong>Object Detection:</strong> Locating and identifying objects in images</li>
+                    <li><strong>Image Classification:</strong> Categorizing images into different classes</li>
+                    <li><strong>Segmentation:</strong> Dividing images into meaningful parts</li>
+                </ul>
+            </section>
+
+            <section class="blog-post-section">
+                <h2>Popular Computer Vision Applications</h2>
+                <div class="applications-grid">
+                    <div class="application-card">
+                        <i class="fas fa-car"></i>
+                        <h3>Autonomous Vehicles</h3>
+                        <p>Self-driving cars use computer vision to navigate and understand their surroundings</p>
+                    </div>
+                    <div class="application-card">
+                        <i class="fas fa-medkit"></i>
+                        <h3>Medical Imaging</h3>
+                        <p>Analyzing X-rays, MRIs, and other medical images for diagnosis</p>
+                    </div>
+                    <div class="application-card">
+                        <i class="fas fa-camera"></i>
+                        <h3>Surveillance</h3>
+                        <p>Security systems that detect and track objects or people</p>
+                    </div>
+                    <div class="application-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>Industrial Automation</h3>
+                        <p>Quality control and automated inspection in manufacturing</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blog-post-section">
+                <h2>Getting Started with Computer Vision</h2>
+                <p>Here's a simple example of how to implement basic image processing using Python and OpenCV:</p>
+                
+                <pre><code class="language-python">import cv2
+import numpy as np
+
+# Load an image
+image = cv2.imread('image.jpg')
+
+# Convert to grayscale
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# Apply Gaussian blur
+blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+
+# Detect edges using Canny
+edges = cv2.Canny(blurred, 50, 150)
+
+# Display the results
+cv2.imshow('Original', image)
+cv2.imshow('Edges', edges)
+cv2.waitKey(0)
+cv2.destroyAllWindows()</code></pre>
+            </section>
+
+            <section class="blog-post-section">
+                <h2>Essential Computer Vision Libraries</h2>
+                <div class="library-grid">
+                    <div class="library-card">
+                        <h3>OpenCV</h3>
+                        <p>A comprehensive library for real-time computer vision</p>
+                        <a href="https://opencv.org/" class="library-link" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="library-card">
+                        <h3>TensorFlow</h3>
+                        <p>Google's machine learning framework with strong CV capabilities</p>
+                        <a href="https://www.tensorflow.org/" class="library-link" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="library-card">
+                        <h3>PyTorch</h3>
+                        <p>Facebook's deep learning framework popular for CV research</p>
+                        <a href="https://pytorch.org/" class="library-link" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blog-post-section">
+                <h2>Best Practices in Computer Vision</h2>
+                <ol class="best-practices">
+                    <li>Always preprocess your images to improve quality and consistency</li>
+                    <li>Use appropriate data augmentation techniques to increase dataset size</li>
+                    <li>Consider computational efficiency when choosing algorithms</li>
+                    <li>Regularly validate your models with diverse test datasets</li>
+                    <li>Keep up with the latest research and developments in the field</li>
+                </ol>
+            </section>
+
+            <section class="blog-post-section">
+                <h2>Future of Computer Vision</h2>
+                <p>The field of Computer Vision is rapidly evolving, with exciting developments in:</p>
+                <ul class="future-list">
+                    <li>3D vision and depth perception</li>
+                    <li>Real-time video analysis</li>
+                    <li>Edge computing for CV applications</li>
+                    <li>Integration with other AI technologies</li>
+                    <li>Improved accuracy and efficiency</li>
+                </ul>
+            </section>
+
+            <div class="blog-post-navigation">
+                <a href="autonomous-uav-systems.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Previous Post</span>
+                </a>
+                <a href="computer-vision-drones.html" class="nav-button next">
+                    <span>Next Post</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <p>&copy; 2024 Ethem Demir. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize syntax highlighting
+        hljs.highlightAll();
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html> 

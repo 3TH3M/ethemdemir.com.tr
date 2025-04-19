@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting Started with Autonomous UAV Systems - Ethem Demir</title>
+    <title>Getting Started with Autonomous UAV Systems | Ethem Demir</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -29,97 +31,152 @@
 
     <article class="blog-post">
         <header class="blog-post-header">
-            <h1>Getting Started with Autonomous UAV Systems</h1>
             <div class="blog-post-meta">
-                <span><i class="far fa-calendar"></i> April 2024</span>
-                <span><i class="far fa-clock"></i> 15 min read</span>
-                <span><i class="far fa-folder"></i> Tutorial</span>
+                <span><i class="far fa-calendar"></i> April 10, 2024</span>
+                <span><i class="far fa-clock"></i> 20 min read</span>
+                <span><i class="far fa-eye"></i> 3.2k views</span>
+            </div>
+            <h1>Getting Started with Autonomous UAV Systems: A Comprehensive Guide</h1>
+            <div class="blog-post-tags">
+                <span class="blog-post-tag">UAV</span>
+                <span class="blog-post-tag">Autonomous Systems</span>
+                <span class="blog-post-tag">ROS/ROS2</span>
+                <span class="blog-post-tag">Tutorial</span>
             </div>
         </header>
 
         <div class="blog-post-content">
-            <img src="../img/droneAI.png" alt="Autonomous UAV System">
-            
-            <h2>Introduction</h2>
-            <p>Autonomous UAV systems represent the cutting edge of unmanned aerial technology, combining advanced robotics, artificial intelligence, and aerospace engineering. In this comprehensive guide, we'll explore the fundamental concepts, key components, and practical implementation of autonomous UAV systems.</p>
+            <section class="blog-post-section">
+                <h2>Introduction to Autonomous UAV Systems</h2>
+                <p>Autonomous UAV (Unmanned Aerial Vehicle) systems represent the cutting edge of aerial robotics, combining advanced flight control, computer vision, and artificial intelligence to create intelligent flying machines capable of operating independently.</p>
+                
+                <div class="blog-post-image">
+                    <img src="../img/autonomous-uav.jpg" alt="Autonomous UAV System">
+                    <div class="image-caption">Modern autonomous UAV systems integrate multiple technologies for intelligent operation</div>
+                </div>
+            </section>
 
-            <h2>Key Components of Autonomous UAV Systems</h2>
-            <p>An autonomous UAV system consists of several critical components that work together to enable autonomous flight:</p>
-            <ul>
-                <li>Flight Control System (FCS)</li>
-                <li>Navigation System</li>
-                <li>Sensors and Perception Systems</li>
-                <li>Communication Systems</li>
-                <li>Power Management</li>
-                <li>Mission Planning Software</li>
-            </ul>
+            <section class="blog-post-section">
+                <h2>Core Components of Autonomous UAV Systems</h2>
+                <div class="components-grid">
+                    <div class="component-card">
+                        <i class="fas fa-microchip"></i>
+                        <h3>Flight Controller</h3>
+                        <p>The brain of the UAV, responsible for flight stability and control</p>
+                    </div>
+                    <div class="component-card">
+                        <i class="fas fa-camera"></i>
+                        <h3>Vision System</h3>
+                        <p>Computer vision for navigation and obstacle avoidance</p>
+                    </div>
+                    <div class="component-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI Processing</h3>
+                        <p>Machine learning algorithms for decision making</p>
+                    </div>
+                    <div class="component-card">
+                        <i class="fas fa-wifi"></i>
+                        <h3>Communication</h3>
+                        <p>Real-time data transmission and control</p>
+                    </div>
+                </div>
+            </section>
 
-            <h2>Flight Control System</h2>
-            <p>The Flight Control System is the brain of the autonomous UAV. It processes sensor data and controls the aircraft's movements. Here's a basic example of how to implement a simple PID controller in Python:</p>
-            <pre><code>class PIDController:
-    def __init__(self, kp, ki, kd):
-        self.kp = kp
-        self.ki = ki
-        self.kd = kd
-        self.integral = 0
-        self.previous_error = 0
+            <section class="blog-post-section">
+                <h2>Key Technologies</h2>
+                <ul class="feature-list">
+                    <li><strong>ROS/ROS2:</strong> Robot Operating System for UAV control and automation</li>
+                    <li><strong>MAVLink:</strong> Communication protocol for UAV systems</li>
+                    <li><strong>Computer Vision:</strong> For navigation and object detection</li>
+                    <li><strong>Path Planning:</strong> Algorithms for autonomous navigation</li>
+                    <li><strong>Sensor Fusion:</strong> Combining data from multiple sensors</li>
+                    <li><strong>Machine Learning:</strong> For intelligent decision making</li>
+                </ul>
+            </section>
 
-    def compute(self, setpoint, current_value, dt):
-        error = setpoint - current_value
-        self.integral += error * dt
-        derivative = (error - self.previous_error) / dt
-        self.previous_error = error
+            <section class="blog-post-section">
+                <h2>Getting Started with ROS2 for UAV Development</h2>
+                <p>Here's a basic example of setting up a ROS2 node for UAV control:</p>
+                
+                <pre><code class="language-python">import rclpy
+from rclpy.node import Node
+from geometry_msgs.msg import Twist
+
+class UAVController(Node):
+    def __init__(self):
+        super().__init__('uav_controller')
+        self.publisher = self.create_publisher(Twist, '/cmd_vel', 10)
+        self.timer = self.create_timer(0.1, self.timer_callback)
         
-        return (self.kp * error + 
-                self.ki * self.integral + 
-                self.kd * derivative)</code></pre>
+    def timer_callback(self):
+        msg = Twist()
+        msg.linear.x = 1.0  # Forward velocity
+        msg.angular.z = 0.5  # Angular velocity
+        self.publisher.publish(msg)
 
-            <h2>Navigation and Path Planning</h2>
-            <p>Navigation systems in autonomous UAVs typically use a combination of GPS, inertial measurement units (IMUs), and computer vision. The path planning algorithm determines the optimal route from the current position to the target location while avoiding obstacles.</p>
+def main():
+    rclpy.init()
+    node = UAVController()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
 
-            <blockquote>
-                "The key to successful autonomous navigation is redundancy in sensor systems and robust error handling."
-            </blockquote>
+if __name__ == '__main__':
+    main()</code></pre>
+            </section>
 
-            <h2>Sensors and Perception</h2>
-            <p>Modern autonomous UAVs use a variety of sensors:</p>
-            <ul>
-                <li>LIDAR for 3D mapping and obstacle detection</li>
-                <li>RGB and thermal cameras for visual perception</li>
-                <li>Ultrasonic sensors for proximity detection</li>
-                <li>IMU for orientation and acceleration data</li>
-            </ul>
+            <section class="blog-post-section">
+                <h2>Essential Development Tools</h2>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>PX4 Autopilot</h3>
+                        <p>Open-source flight control software for UAVs</p>
+                        <a href="https://px4.io/" class="tool-link" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>Gazebo Simulator</h3>
+                        <p>3D robotics simulator for testing UAV systems</p>
+                        <a href="https://gazebosim.org/" class="tool-link" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    <div class="tool-card">
+                        <h3>QGroundControl</h3>
+                        <p>Ground control station for UAV operation</p>
+                        <a href="https://docs.qgroundcontrol.com/" class="tool-link" target="_blank">Learn More <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </section>
 
-            <h2>Communication Systems</h2>
-            <p>Reliable communication is crucial for autonomous UAV operations. The system should include:</p>
-            <ul>
-                <li>Telemetry for real-time data transmission</li>
-                <li>Command and control channels</li>
-                <li>Emergency communication protocols</li>
-                <li>Data logging and storage</li>
-            </ul>
+            <section class="blog-post-section">
+                <h2>Development Best Practices</h2>
+                <ol class="best-practices">
+                    <li>Start with simulation before real-world testing</li>
+                    <li>Implement comprehensive safety checks</li>
+                    <li>Use version control for code management</li>
+                    <li>Document all system components and interfaces</li>
+                    <li>Regularly test and validate system performance</li>
+                </ol>
+            </section>
 
-            <h2>Best Practices and Safety Considerations</h2>
-            <p>When developing autonomous UAV systems, always prioritize safety:</p>
-            <ul>
-                <li>Implement fail-safe mechanisms</li>
-                <li>Include manual override capabilities</li>
-                <li>Follow regulatory requirements</li>
-                <li>Conduct thorough testing in controlled environments</li>
-                <li>Maintain detailed logs for analysis</li>
-            </ul>
-
-            <div class="blog-post-tags">
-                <span class="blog-post-tag">Autonomous Systems</span>
-                <span class="blog-post-tag">UAV</span>
-                <span class="blog-post-tag">Robotics</span>
-                <span class="blog-post-tag">AI</span>
-                <span class="blog-post-tag">Tutorial</span>
-            </div>
+            <section class="blog-post-section">
+                <h2>Future Trends in Autonomous UAV Systems</h2>
+                <ul class="future-list">
+                    <li>Advanced swarm intelligence</li>
+                    <li>Edge computing for real-time processing</li>
+                    <li>Improved battery and power management</li>
+                    <li>Enhanced AI capabilities</li>
+                    <li>Integration with 5G networks</li>
+                </ul>
+            </section>
 
             <div class="blog-post-navigation">
-                <a href="#" class="prev-post"><i class="fas fa-arrow-left"></i> Previous Post</a>
-                <a href="#" class="next-post">Next Post <i class="fas fa-arrow-right"></i></a>
+                <a href="introduction-to-computer-vision.html" class="nav-button prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Previous Post</span>
+                </a>
+                <a href="computer-vision-drones.html" class="nav-button next">
+                    <span>Next Post</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </article>
@@ -128,6 +185,10 @@
         <p>&copy; 2024 Ethem Demir. All rights reserved.</p>
     </footer>
 
+    <script>
+        // Initialize syntax highlighting
+        hljs.highlightAll();
+    </script>
     <script src="../script.js"></script>
 </body>
 </html> 
